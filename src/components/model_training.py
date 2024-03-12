@@ -24,12 +24,13 @@ class ModelTraining:
             x_train, y_train, x_test, y_test = (train_arr[:,:-1], train_arr[:,-1], test_arr[:, :-1], test_arr[:,-1])
             model = LinearRegression()
             
-            logging.info('Saving the model into directory')
-            save_obj(self.model_train_config.trained_model_path, model)
+            
 
             logging.info('Receiving the model and model_score')
             score, model = train_and_evaluate(x_train, y_train, x_test, y_test, model)
             logging.info('Training part has completed successfully!')
+            logging.info('Saving the model into directory')
+            save_obj(self.model_train_config.trained_model_path, model)
             return score
 
         except Exception as e:
